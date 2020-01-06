@@ -1,0 +1,280 @@
+-- MySQL dump 10.13  Distrib 8.0.18, for Win64 (x86_64)
+--
+-- Host: localhost    Database: bostadsbäst
+-- ------------------------------------------------------
+-- Server version	8.0.18
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES latin1 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Current Database: `bostadsbäst`
+--
+
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `bostadsbäst` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_bin */ /*!80016 DEFAULT ENCRYPTION='N' */;
+
+USE `bostadsbäst`;
+
+--
+-- Table structure for table `besiktning`
+--
+
+DROP TABLE IF EXISTS `besiktning`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `besiktning` (
+  `datum` date NOT NULL,
+  `hissID` int(11) NOT NULL,
+  `giltighetsdagar` int(11) NOT NULL,
+  `firma` varchar(50) NOT NULL,
+  PRIMARY KEY (`datum`,`hissID`),
+  KEY `FK_hiss_hissID_idx` (`hissID`),
+  KEY `FK_firma_namn_idx` (`firma`),
+  CONSTRAINT `FK_firma_namn` FOREIGN KEY (`firma`) REFERENCES `firma` (`name`) ON UPDATE CASCADE,
+  CONSTRAINT `FK_hiss_hissID` FOREIGN KEY (`hissID`) REFERENCES `hiss` (`hissId`) ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `besiktning`
+--
+
+LOCK TABLES `besiktning` WRITE;
+/*!40000 ALTER TABLE `besiktning` DISABLE KEYS */;
+INSERT INTO `besiktning` VALUES ('2019-03-16',7,40,'Hiss AB'),('2019-04-10',8,30,'Hiss AB'),('2019-04-23',6,50,'Hiss AB'),('2019-05-14',4,45,'Tyresö AB'),('2019-05-14',5,45,'Tyresö AB'),('2019-06-13',2,50,'Stockholms Hiss AB'),('2019-07-20',3,45,'Stockholms Hiss AB'),('2019-10-10',1,60,'Hiss AB'),('2019-11-06',9,35,'Stockholms Hiss AB'),('2019-11-11',10,60,'Tyresö AB');
+/*!40000 ALTER TABLE `besiktning` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cykelrum`
+--
+
+DROP TABLE IF EXISTS `cykelrum`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `cykelrum` (
+  `cykelrumID` int(11) NOT NULL AUTO_INCREMENT,
+  `namn` varchar(30) DEFAULT NULL,
+  `yta` int(11) NOT NULL,
+  `hus` int(11) NOT NULL,
+  PRIMARY KEY (`cykelrumID`),
+  KEY `hus_idx` (`hus`) /*!80000 INVISIBLE */,
+  CONSTRAINT `FK_hus_Husid` FOREIGN KEY (`hus`) REFERENCES `hus` (`husID`) ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cykelrum`
+--
+
+LOCK TABLES `cykelrum` WRITE;
+/*!40000 ALTER TABLE `cykelrum` DISABLE KEYS */;
+INSERT INTO `cykelrum` VALUES (1,'Blå',100,1),(2,'Röd',80,1),(3,'Grön',90,2),(4,'Gul',110,2),(5,'Blå',80,2),(6,'Rosa',90,3),(7,'Röd',95,3),(8,NULL,90,5);
+/*!40000 ALTER TABLE `cykelrum` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `firma`
+--
+
+DROP TABLE IF EXISTS `firma`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `firma` (
+  `name` varchar(50) NOT NULL,
+  PRIMARY KEY (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `firma`
+--
+
+LOCK TABLES `firma` WRITE;
+/*!40000 ALTER TABLE `firma` DISABLE KEYS */;
+INSERT INTO `firma` VALUES ('Hiss AB'),('Stockholms Hiss AB'),('Tyresö AB');
+/*!40000 ALTER TABLE `firma` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `förening`
+--
+
+DROP TABLE IF EXISTS `förening`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `fÃ¶rening` (
+  `orgnr` varchar(20) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `flerparkplats` tinyint(4) NOT NULL,
+  PRIMARY KEY (`orgnr`),
+  UNIQUE KEY `altKey_name_UNIQUE` (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `förening`
+--
+
+LOCK TABLES `förening` WRITE;
+/*!40000 ALTER TABLE `förening` DISABLE KEYS */;
+INSERT INTO `förening` VALUES ('123456','Stockholmsbostäder',1),('123654','svenska Bostäder',1),('654321','Familj Bostäder',0);
+/*!40000 ALTER TABLE `förening` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `hiss`
+--
+
+DROP TABLE IF EXISTS `hiss`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `hiss` (
+  `hissId` int(11) NOT NULL AUTO_INCREMENT,
+  `namn` varchar(30) DEFAULT NULL,
+  `storlekvikt` int(11) NOT NULL,
+  `kapacitetpersoner` int(11) NOT NULL,
+  `hus` int(11) NOT NULL,
+  PRIMARY KEY (`hissId`),
+  KEY `FK_hiss_husID_idx` (`hus`),
+  CONSTRAINT `FK_hiss_husID` FOREIGN KEY (`hus`) REFERENCES `hus` (`husID`) ON DELETE RESTRICT ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `hiss`
+--
+
+LOCK TABLES `hiss` WRITE;
+/*!40000 ALTER TABLE `hiss` DISABLE KEYS */;
+INSERT INTO `hiss` VALUES (1,NULL,500,8,1),(2,'A',550,9,2),(3,'B',600,10,2),(4,'C',600,9,3),(5,'B',600,9,3),(6,NULL,550,8,4),(7,'AB',500,9,5),(8,'BC',600,11,5),(9,'C',500,7,2),(10,NULL,500,8,6);
+/*!40000 ALTER TABLE `hiss` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `hus`
+--
+
+DROP TABLE IF EXISTS `hus`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `hus` (
+  `husID` int(11) NOT NULL,
+  `postadress` varchar(40) NOT NULL,
+  `gatuadress` varchar(40) NOT NULL,
+  `antalvÃ¥ningar` int(11) NOT NULL,
+  `fÃ¶rening` varchar(20) NOT NULL,
+  PRIMARY KEY (`husID`),
+  UNIQUE KEY `alternate_Key` (`postadress`,`gatuadress`),
+  KEY `FK_fÃ¶rening_idx` (`fÃ¶rening`),
+  CONSTRAINT `FK_fÃ¶rening` FOREIGN KEY (`fÃ¶rening`) REFERENCES `fÃ¶rening` (`orgnr`) ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `hus`
+--
+
+LOCK TABLES `hus` WRITE;
+/*!40000 ALTER TABLE `hus` DISABLE KEYS */;
+INSERT INTO `hus` VALUES (1,'13545 tyresö','granängsvägen 3',5,'123456'),(2,'16107 solna','Ahlgatan 6',7,'123456'),(3,'12332 sollentuna','murarvägen 4',6,'654321'),(4,'12323 bromma','Valhalavägen 13',9,'654321'),(5,'32132 alvsjö','drottningsgatan 12',5,'123654'),(6,'13452 farsta','leljeholmsvägen 65',10,'123654');
+/*!40000 ALTER TABLE `hus` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `maskinförekomst`
+--
+
+DROP TABLE IF EXISTS `maskinförekomst`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `maskinfÃ¶rekomst` (
+  `tvÃ¤ttstugaID` int(11) NOT NULL,
+  `maskintyp` varchar(30) NOT NULL,
+  `antal` int(11) NOT NULL,
+  PRIMARY KEY (`tvÃ¤ttstugaID`,`maskintyp`),
+  KEY `FK_maskinTyp_namn_idx` (`maskintyp`) /*!80000 INVISIBLE */,
+  CONSTRAINT `FK_maskinTyp_namn` FOREIGN KEY (`maskintyp`) REFERENCES `maskintyp` (`namn`) ON UPDATE CASCADE,
+  CONSTRAINT `FK_tvÃ¤tstugga_tvÃ¤tstuggaID` FOREIGN KEY (`tvÃ¤ttstugaID`) REFERENCES `tvÃ¤ttstuga` (`tvÃ¤ttstugaId`) ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `maskinförekomst`
+--
+
+LOCK TABLES `maskinförekomst` WRITE;
+/*!40000 ALTER TABLE `maskinförekomst` DISABLE KEYS */;
+INSERT INTO `maskinförekomst` VALUES (1,'Manglar',2),(1,'Torkskåp',1),(1,'Torktumlare',1),(1,'Tvättmaskin',3),(2,'Manglar',2),(2,'Torkskåp',2),(2,'Torktumlare',1),(2,'Tvättmaskin',2),(3,'Manglar',3),(3,'Torkskåp',1),(3,'Torktumlare',1),(3,'Tvättmaskin',2),(4,'Manglar',2),(4,'Torkskåp',1),(4,'Torktumlare',1),(4,'Tvättmaskin',2),(5,'Manglar',2),(5,'Torkskåp',1),(5,'Torktumlare',2),(5,'Tvättmaskin',4),(6,'Manglar',2),(6,'Torkskåp',2),(6,'Torktumlare',2),(6,'Tvättmaskin',4),(7,'Manglar',3),(7,'Torkskåp',2),(7,'Torktumlare',4),(7,'Tvättmaskin',6);
+/*!40000 ALTER TABLE `maskinförekomst` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `maskintyp`
+--
+
+DROP TABLE IF EXISTS `maskintyp`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `maskintyp` (
+  `namn` varchar(30) NOT NULL,
+  PRIMARY KEY (`namn`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `maskintyp`
+--
+
+LOCK TABLES `maskintyp` WRITE;
+/*!40000 ALTER TABLE `maskintyp` DISABLE KEYS */;
+INSERT INTO `maskintyp` VALUES ('Manglar'),('Torkskåp'),('Torktumlare'),('Tvättmaskin');
+/*!40000 ALTER TABLE `maskintyp` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tvättstuga`
+--
+
+DROP TABLE IF EXISTS `tvättstuga`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tvÃ¤ttstuga` (
+  `tvÃ¤ttstugaId` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(30) DEFAULT NULL,
+  `yta` int(11) NOT NULL,
+  `hus` int(11) NOT NULL,
+  PRIMARY KEY (`tvÃ¤ttstugaId`),
+  KEY `FK_Hus_husID_idx` (`hus`),
+  CONSTRAINT `FK_tvÃ¤tstuga_husID` FOREIGN KEY (`hus`) REFERENCES `hus` (`husID`) ON DELETE RESTRICT ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tvättstuga`
+--
+
+LOCK TABLES `tvättstuga` WRITE;
+/*!40000 ALTER TABLE `tvättstuga` DISABLE KEYS */;
+INSERT INTO `tvättstuga` VALUES (1,'AB',60,1),(2,'AC',70,1),(3,'ABC',50,2),(4,'ACB',40,2),(5,'CBA',55,2),(6,NULL,70,4),(7,NULL,90,6);
+/*!40000 ALTER TABLE `tvättstuga` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2020-01-02 14:23:40

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BostadsBäst>
+    <Förening Orgnr ="123456" Namn ="Stockholms Bostäder AB" FlerParkPlats="ja">
+        <Hus AntalVåningar="7" GatuAdress="Murarvägen 3" PostAdress="12323 Bromma" ByggÅr="1980">
+            <Hiss Namn="A" KapacitetVikt="1000 kg" KapacitetPers="10">
+                <Besiktning Datum ="01-06-2019" GiltighetsDagar ="90" Firma ="Hiss AB"/>
+                <Besiktning Datum ="01-09-2019" GiltighetsDagar ="90" Firma ="Hiss AB"/>
+                <Besiktning Datum ="01-12-2019" GiltighetsDagar ="90" Firma ="Hiss AB"/>
+            </Hiss>
+            <Hiss Namn="B" KapacitetVikt="1000 kg" KapacitetPers="10">
+                <Besiktning Datum ="01-05-2019" GiltighetsDagar ="60" Firma ="Hiss AB"/>
+                <Besiktning Datum ="01-07-2019" GiltighetsDagar ="60" Firma ="Hiss AB"/>
+                <Besiktning Datum ="01-09-2019" GiltighetsDagar ="60" Firma ="Hiss AB"/>
+                <Besiktning Datum ="01-11-2019" GiltighetsDagar ="60" Firma ="Hiss AB"/>
+            </Hiss>
+            <TvättStuga Yta ="100">
+                <Maskin Namn ="tvättmaskin" Antal ="3"/>
+                <Maskin Namn ="torktumlare" Antal ="1"/>
+                <Maskin Namn ="torkskåp" Antal ="1"/>
+            </TvättStuga>
+            <CykelRum Yta ="120"/>
+        </Hus> 
+        <Hus AntalVåningar="6" GatuAdress="Ahlgatan 6" PostAdress="10623 Bromma" ByggÅr="1960">
+            <TvättStuga Yta ="110">
+                <Maskin Namn ="tvättmaskin" Antal ="4"/>
+                <Maskin Namn ="torktumlare" Antal ="2"/>
+                <Maskin Namn ="torkskåp" Antal ="2"/>
+                <Maskin Namn ="manglar" Antal ="1"/>
+            </TvättStuga>
+            <CykelRum Yta ="100"/>
+        </Hus> 
+    </Förening>
+    <Förening Orgnr ="133456" Namn ="Svenska Bostäder" FlerParkPlats="ja">
+        <Hus AntalVåningar="5" GatuAdress="Ekholmsvägen 145" PostAdress="12747 Skärholmen" ByggÅr="1970">
+            <Hiss KapacitetVikt="600 kg" KapacitetPers="10">
+                <Besiktning Datum ="12-06-2019" GiltighetsDagar ="60" Firma ="Tyresö AB"/>
+                <Besiktning Datum ="12-08-2019" GiltighetsDagar ="90" Firma ="Tyresö AB"/>
+                <Besiktning Datum ="12-11-2019" GiltighetsDagar ="60" Firma ="Tyresö AB"/>
+            </Hiss>
+            <TvättStuga Yta ="100">
+                <Maskin Namn ="tvättmaskin" Antal ="3"/>
+                <Maskin Namn ="torktumlare" Antal ="1"/>
+                <Maskin Namn ="torkskåp" Antal ="2"/>
+                <Maskin Namn ="manglar" Antal ="2"/>
+            </TvättStuga>
+        </Hus> 
+        <Hus AntalVåningar="4" GatuAdress="granängsvägen 3" PostAdress="10304 Solna" ByggÅr="1980">
+            <TvättStuga Namn= "AB" Yta ="60">
+                <Maskin Namn = "tvättmaskin" Antal ="2"/>
+                <Maskin Namn ="torktumlare" Antal ="1"/>
+                <Maskin Namn ="torkskåp" Antal ="1"/>
+                <Maskin Namn ="manglar" Antal ="1"/>
+            </TvättStuga>
+            <TvättStuga Namn="AC" Yta ="70">
+                <Maskin Namn ="tvättmaskin" Antal ="3"/>
+                <Maskin Namn= "torktumlare" Antal ="2"/>
+                <Maskin Namn ="torkskåp" Antal ="1"/>    
+                <Maskin Namn ="manglar" Antal ="2"/>            
+            </TvättStuga>
+            <CykelRum Yta ="100"/>
+        </Hus> 
+        <Hus AntalVåningar="3" GatuAdress="krällingegränd 10" PostAdress="16361 Spånga" ByggÅr="1980">
+            <TvättStuga Namn= "AB" Yta ="120">
+                <Maskin Namn ="tvättmaskin" Antal ="4"/>
+                <Maskin Namn= "torktumlare" Antal ="2"/>
+                <Maskin Namn ="torkskåp" Antal ="1"/>
+                <Maskin Namn ="manglar" Antal ="2"/>
+            </TvättStuga>
+            <CykelRum Yta ="100"/>
+         </Hus> 
+    </Förening>
+    <Förening Orgnr ="143456" Namn ="Familj Bostäder AB" FlerParkPlats="nej">
+        <Hus AntalVåningar="6" GatuAdress="Glömmingegränd 6" PostAdress= "16362 Spånga" ByggÅr="1960">
+            <Hiss KapacitetVikt="700 kg" KapacitetPers="9">
+                <Besiktning Datum ="15-01-2019" GiltighetsDagar ="60" Firma ="Tyresö AB"/>
+                <Besiktning Datum ="15-03-2019" GiltighetsDagar ="60" Firma ="Tyresö AB"/>
+                <Besiktning Datum ="15-05-2019" GiltighetsDagar ="60" Firma ="Tyresö AB"/>
+            </Hiss>
+            <TvättStuga Yta ="100">
+                <Maskin Namn ="tvättmaskin" Antal ="4"/>
+                <Maskin Namn ="torktumlare" Antal ="1"/>
+                <Maskin Namn= "torkskåp" Antal ="1"/>
+                <Maskin Namn ="manglar" Antal ="2"/>
+            </TvättStuga>
+            <CykelRum Yta ="120"/>
+        </Hus>
+        <Hus AntalVåningar="7" GatuAdress="Murarvägen 3" PostAdress="12323 Bromma" ByggÅr="1980">
+            <Hiss Namn="A" KapacitetVikt="1000 kg" KapacitetPers="10">
+                <Besiktning Datum ="15-06-2019" GiltighetsDagar ="30" Firma ="Stockholms Hiss"/>
+                <Besiktning Datum ="15-07-2019" GiltighetsDagar ="60" Firma ="Stockholms Hiss"/>
+                <Besiktning Datum ="15-09-2019" GiltighetsDagar ="90" Firma ="Stockholms Hiss"/>
+            </Hiss>
+            <Hiss Namn="B" KapacitetVikt="1000 kg" KapacitetPers="10">
+                <Besiktning Datum ="10-05-2019" GiltighetsDagar ="60" Firma ="Stockholms Hiss"/>
+                <Besiktning Datum ="10-07-2019" GiltighetsDagar ="60" Firma ="Stockholms Hiss"/>
+                <Besiktning Datum ="10-09-2019" GiltighetsDagar ="60" Firma ="Stockholms Hiss"/>
+                <Besiktning Datum ="10-11-2019" GiltighetsDagar ="60" Firma ="Stockholms Hiss"/>
+            </Hiss>
+            <CykelRum Yta ="100"/>
+        </Hus> 
+    </Förening>
+</BostadsBäst>
