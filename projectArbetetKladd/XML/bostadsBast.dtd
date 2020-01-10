@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!ELEMENT BostadsBast (Förening+)>
+<!ELEMENT Förening (Hus+)>
+<!ATTLIST Förening
+Orgnr CDATA #REQUIRED
+Namn CDATA #REQUIRED
+FlerParkPlats CDATA #REQUIRED>
+
+<!ELEMENT Hus (Hiss*, TvättStuga*, CykelRum*)>
+<!ATTLIST Hus
+AntalVåningar CDATA #REQUIRED
+GatuAdress CDATA #REQUIRED
+PostAdress CDATA #REQUIRED
+ByggÅr CDATA #REQUIRED>
+
+<!ELEMENT Hiss (Besiktning+)>
+<!ATTLIST Hiss
+Namn CDATA #IMPLIED
+KapacitetVikt CDATA #REQUIRED
+KapacitetPers CDATA #REQUIRED>
+<!ELEMENT Besiktning EMPTY>
+<!ATTLIST Besiktning
+Datum CDATA #IMPLIED
+GiltighetsDagar CDATA #REQUIRED
+Firma CDATA #REQUIRED>
+
+<!ELEMENT TvättStuga (Maskin+)>
+<!ATTLIST TvättStuga
+Namn CDATA #IMPLIED
+Yta CDATA #REQUIRED>
+
+<!ELEMENT Maskin EMPTY>
+<!ATTLIST Maskin
+Namn CDATA #REQUIRED
+Antal CDATA #REQUIRED>
+
+<!ELEMENT CykelRum EMPTY>
+<!ATTLIST CykelRum
+Namn CDATA #IMPLIED
+Yta CDATA #REQUIRED>

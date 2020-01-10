@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<BostadsBäst>
+<!DOCTYPE BostadsBast SYSTEM "BostadsBast.dtd">
+<BostadsBast>
     <Förening Orgnr ="123456" Namn ="Stockholms Bostäder AB" FlerParkPlats="ja">
         <Hus AntalVåningar="7" GatuAdress="Murarvägen 3" PostAdress="12323 Bromma" ByggÅr="1980">
             <Hiss Namn="A" KapacitetVikt="1000 kg" KapacitetPers="10">
@@ -60,7 +61,7 @@
             <CykelRum Yta ="100"/>
         </Hus> 
         <Hus AntalVåningar="3" GatuAdress="krällingegränd 10" PostAdress="16361 Spånga" ByggÅr="1980">
-            <TvättStuga Namn= "AB" Yta ="120">
+            <TvättStuga Yta ="120">
                 <Maskin Namn ="tvättmaskin" Antal ="4"/>
                 <Maskin Namn= "torktumlare" Antal ="2"/>
                 <Maskin Namn ="torkskåp" Antal ="1"/>
@@ -99,4 +100,4 @@
             <CykelRum Yta ="100"/>
         </Hus> 
     </Förening>
-</BostadsBäst>
+</BostadsBast>
